@@ -1,0 +1,137 @@
+﻿<mah:MetroWindow
+    x:Class="IM_Wc.Views.LoginView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+    xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
+    xmlns:local="clr-namespace:IM_Wc.Views"
+    xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:prism="http://prismlibrary.com/"
+    Name="win"
+    Width="280"
+    Height="380"
+    prism:ViewModelLocator.AutoWireViewModel="True"
+    AllowsTransparency="True"
+    Background="Transparent"
+    BorderThickness="0"
+    NonActiveBorderBrush="Transparent"
+    NonActiveWindowTitleBrush="White"
+    ResizeMode="NoResize"
+    UseNoneWindowStyle="True"
+    WindowStartupLocation="CenterScreen"
+    WindowTransitionsEnabled="False"
+    mc:Ignorable="d">
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding LoadedCommand}" CommandParameter="{Binding ElementName=win}" />
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+    <Border
+        Background="White"
+        BorderBrush="#333"
+        BorderThickness="0.2"
+        ClipToBounds="True"
+        CornerRadius="3"
+        MouseMove="Border_MouseMove">
+
+        <StackPanel>
+            <DockPanel ClipToBounds="True">
+                <DockPanel.Resources>
+                    <SolidColorBrush x:Key="MahApps.Brushes.Gray8" Color="#FFFB7373" />
+                    <SolidColorBrush x:Key="MahApps.Brushes.Gray7" Color="#FFE14848" />
+                </DockPanel.Resources>
+                <Button
+                    Width="35"
+                    Height="22"
+                    VerticalAlignment="Top"
+                    mah:ControlsHelper.CornerRadius="0,3,0,0"
+                    mah:ControlsHelper.FocusBorderThickness="0"
+                    Background="Transparent"
+                    BorderThickness="0"
+                    Click="Button_Click"
+                    DockPanel.Dock="Right">
+                    <iconPacks:PackIconCodicons Height="8" Kind="Close" />
+                </Button>
+                <TextBlock
+                    Margin="10,5"
+                    FontSize="14"
+                    Foreground="Silver"
+                    Text="{DynamicResource ProductName}" />
+            </DockPanel>
+            <Grid>
+                <StackPanel>
+                    <Border
+                        Width="80"
+                        Height="80"
+                        Margin="50,50,50,20"
+                        CornerRadius="5"
+                        Focusable="False">
+                        <Border.Background>
+                            <ImageBrush ImageSource="/Assets/avatar.png" />
+                        </Border.Background>
+                    </Border>
+                    <TextBlock
+                        FontSize="22"
+                        Text="{Binding Name}"
+                        TextAlignment="Center" />
+                    <Border Margin="48,64,48,0">
+                        <Border.Resources>
+                            <SolidColorBrush x:Key="MahApps.Brushes.Gray8" Color="#FF38CD7F" />
+                            <SolidColorBrush x:Key="MahApps.Brushes.Gray7" Color="#FF06AD56" />
+                        </Border.Resources>
+                        <Button
+                            Padding="6"
+                            mah:ControlsHelper.FocusBorderThickness="0"
+                            Background="#FF07C160"
+                            Command="{Binding LoginCommand}"
+                            Content="{DynamicResource LoginText}"
+                            FontSize="18"
+                            Foreground="White" />
+                    </Border>
+                    <Grid Margin="48,15">
+                        <Grid.Resources>
+                            <SolidColorBrush x:Key="MahApps.Brushes.Gray8" Color="Transparent" />
+                            <SolidColorBrush x:Key="MahApps.Brushes.Gray7" Color="Transparent" />
+                        </Grid.Resources>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="auto" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Button
+                            HorizontalAlignment="Center"
+                            mah:ControlsHelper.FocusBorderThickness="0"
+                            Background="Transparent"
+                            BorderThickness="0"
+                            Command="{Binding SwitchAccountCommand}"
+                            Content="{DynamicResource SwitchAccount}"
+                            Cursor="Hand"
+                            FontSize="14"
+                            Foreground="#FF436895" />
+                        <Border
+                            Grid.Column="1"
+                            Margin="0,5"
+                            BorderBrush="#eee"
+                            BorderThickness="0.5,0" />
+                    </Grid>
+                </StackPanel>
+                <StackPanel Background="White" Visibility="{Binding TdCodeVisibility}">
+                    <TextBlock
+                        Margin="18"
+                        FontSize="18"
+                        Foreground="#FF07C160"
+                        Text="{DynamicResource ScanCodeLogin}"
+                        TextAlignment="Center" />
+                    <Image
+                        Width="160"
+                        Height="160"
+                        Source="{Binding TdCode}" />
+                </StackPanel>
+            </Grid>
+            <Border />
+        </StackPanel>
+
+    </Border>
+</mah:MetroWindow>
