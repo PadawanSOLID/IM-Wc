@@ -8,7 +8,8 @@
     xmlns:local="clr-namespace:IM_Wc.Views"
     xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:prism="http://prismlibrary.com/"
+    xmlns:prism="http://prismlibrary.com/" xmlns:vm="clr-namespace:IM_Wc.ViewModels"
+    d:DataContext="{d:DesignInstance vm:LoginViewModel,IsDesignTimeCreatable=True}"
     Name="win"
     Width="280"
     Height="380"
@@ -60,8 +61,8 @@
                     Foreground="Silver"
                     Text="{DynamicResource ProductName}" />
             </DockPanel>
-            <Grid>
-                <StackPanel>
+            <Grid Margin="1">
+                <StackPanel >
                     <Border
                         Width="80"
                         Height="80"
@@ -72,35 +73,37 @@
                             <ImageBrush ImageSource="/Assets/avatar.png" />
                         </Border.Background>
                     </Border>
-                    <TextBlock
+                    <StackPanel>
+                        <TextBlock
                         FontSize="22"
                         Text="{Binding Name}"
                         TextAlignment="Center" />
-                    <Border Margin="48,64,48,0">
-                        <Border.Resources>
-                            <SolidColorBrush x:Key="MahApps.Brushes.Gray8" Color="#FF38CD7F" />
-                            <SolidColorBrush x:Key="MahApps.Brushes.Gray7" Color="#FF06AD56" />
-                        </Border.Resources>
-                        <Button
+                        <Border Margin="48,64,48,0">
+                            <Border.Resources>
+                                <SolidColorBrush x:Key="MahApps.Brushes.Gray8" Color="#FF38CD7F" />
+                                <SolidColorBrush x:Key="MahApps.Brushes.Gray7" Color="#FF06AD56" />
+                            </Border.Resources>
+                            <Button
                             Padding="6"
                             mah:ControlsHelper.FocusBorderThickness="0"
                             Background="#FF07C160"
                             Command="{Binding LoginCommand}"
                             Content="{DynamicResource LoginText}"
+                            Cursor="Hand"
                             FontSize="18"
                             Foreground="White" />
-                    </Border>
-                    <Grid Margin="48,15">
-                        <Grid.Resources>
-                            <SolidColorBrush x:Key="MahApps.Brushes.Gray8" Color="Transparent" />
-                            <SolidColorBrush x:Key="MahApps.Brushes.Gray7" Color="Transparent" />
-                        </Grid.Resources>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*" />
-                            <ColumnDefinition Width="auto" />
-                            <ColumnDefinition Width="*" />
-                        </Grid.ColumnDefinitions>
-                        <Button
+                        </Border>
+                        <Grid Margin="48,15,48,0">
+                            <Grid.Resources>
+                                <SolidColorBrush x:Key="MahApps.Brushes.Gray8" Color="Transparent" />
+                                <SolidColorBrush x:Key="MahApps.Brushes.Gray7" Color="Transparent" />
+                            </Grid.Resources>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="auto" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Button
                             HorizontalAlignment="Center"
                             mah:ControlsHelper.FocusBorderThickness="0"
                             Background="Transparent"
@@ -110,24 +113,32 @@
                             Cursor="Hand"
                             FontSize="14"
                             Foreground="#FF436895" />
-                        <Border
+                            <Border
                             Grid.Column="1"
                             Margin="0,5"
                             BorderBrush="#eee"
                             BorderThickness="0.5,0" />
-                    </Grid>
+                        </Grid>
+                    </StackPanel>
                 </StackPanel>
-                <StackPanel Background="White" Visibility="{Binding TdCodeVisibility}">
+                <StackPanel Background="White" Visibility="{Binding TdCodeVisibility}" >
                     <TextBlock
                         Margin="18"
                         FontSize="18"
                         Foreground="#FF07C160"
                         Text="{DynamicResource ScanCodeLogin}"
                         TextAlignment="Center" />
-                    <Image
-                        Width="160"
-                        Height="160"
-                        Source="{Binding TdCode}" />
+                    <Grid>
+                        <Image
+                            Width="160"
+                            Height="160"
+                            Cursor="Hand" Opacity="{Binding ImageOpacity}"
+                            Source="{Binding TdCode}" />
+                        <mah:ProgressRing
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            IsActive="{Binding IsProcessBarActive}" />
+                    </Grid>
                 </StackPanel>
             </Grid>
             <Border />
