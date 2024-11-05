@@ -17,6 +17,7 @@
     AllowsTransparency="True"
     Background="Transparent"
     BorderThickness="0"
+    GlowBrush="#33333333"
     NonActiveBorderBrush="Transparent"
     NonActiveWindowTitleBrush="White"
     ResizeMode="NoResize"
