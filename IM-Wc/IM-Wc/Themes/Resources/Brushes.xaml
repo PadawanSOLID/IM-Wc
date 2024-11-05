@@ -1,0 +1,17 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <SolidColorBrush x:Key="NaviBarBackground" Color="#FF2E2E2E" ></SolidColorBrush>
+    <SolidColorBrush x:Key="NaviBarItemFill" Color="Transparent"/>
+    <SolidColorBrush x:Key="NaviBarItemSelectedFill" Color="#FF07C160"/>
+    <SolidColorBrush x:Key="NaviBarItemStroke" Color="#FF838383"/>
+    <SolidColorBrush x:Key="NaviBarItemSelectedStroke" Color="#FF2E2E2E"/>
+    <SolidColorBrush x:Key="ListBackground" />
+    <SolidColorBrush x:Key="ListItemBackground" />
+    <SolidColorBrush x:Key="ListItemSelectedBackground" />
+    <SolidColorBrush x:Key="ListItemHoverBackground" />
+    <SolidColorBrush x:Key="ListItemTopBackground" />
+    <SolidColorBrush x:Key="ListItemTitleForeground" />
+    <SolidColorBrush x:Key="ListItemLatestMessageForeground" />
+    <SolidColorBrush x:Key="ListItemLatestDatetimeForeground" />
+    <SolidColorBrush x:Key="ListItemStateForeground" />
+
+</ResourceDictionary>

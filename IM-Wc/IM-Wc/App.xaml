@@ -11,6 +11,9 @@
                 <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Fonts.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Themes/Light.Steel.xaml" />
                 <ResourceDictionary Source="/Themes/cn_s.xaml" />
+                <ResourceDictionary Source="/Themes/Default.xaml" />
+                <ResourceDictionary Source="/Themes/Resources/Brushes.xaml" />
+ 
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

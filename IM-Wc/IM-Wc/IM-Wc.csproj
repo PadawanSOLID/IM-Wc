@@ -11,17 +11,19 @@
 
   <ItemGroup>
     <None Remove="Assets\avatar.png" />
+    <None Remove="Assets\banli.jpg" />
     <None Remove="Assets\tdcode.png" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.2" />
-    <PackageReference Include="MahApps.Metro" Version="2.4.10" />
-    <PackageReference Include="MahApps.Metro.IconPacks" Version="4.11.0" />
+    <PackageReference Include="MahApps.Metro" Version="3.0.0-alpha0513" />
+    <PackageReference Include="MahApps.Metro.IconPacks" Version="5.1.0" />
     <PackageReference Include="Prism.Unity" Version="8.1.97" />
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Themes\Styles\" />
     <Folder Include="Services\" />
     <Folder Include="Interfaces\" />
     <Folder Include="Constants\" />
@@ -29,6 +31,7 @@
 
   <ItemGroup>
     <Resource Include="Assets\avatar.png" />
+    <Resource Include="Assets\banli.jpg" />
     <Resource Include="Assets\tdcode.png" />
   </ItemGroup>
 

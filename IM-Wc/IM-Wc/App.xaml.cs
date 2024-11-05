@@ -38,6 +38,7 @@ namespace IM_Wc
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
             containerRegistry.RegisterForNavigation<LoginView, LoginViewModel>();
+            containerRegistry.RegisterForNavigation<ShellWindow, ShellViewModel>();
         }
     }
 

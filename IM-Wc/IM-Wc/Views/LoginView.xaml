@@ -8,20 +8,18 @@
     xmlns:local="clr-namespace:IM_Wc.Views"
     xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:prism="http://prismlibrary.com/" xmlns:vm="clr-namespace:IM_Wc.ViewModels"
-    d:DataContext="{d:DesignInstance vm:LoginViewModel,IsDesignTimeCreatable=True}"
+    xmlns:prism="http://prismlibrary.com/"
+    xmlns:vm="clr-namespace:IM_Wc.ViewModels"
     Name="win"
     Width="280"
-    Height="380"
-    prism:ViewModelLocator.AutoWireViewModel="True"
-    AllowsTransparency="True"
-    Background="Transparent"
-    BorderThickness="0"
-    GlowBrush="#33333333"
+    Height="380" prism:ViewModelLocator.AutoWireViewModel="True"
+    d:DataContext="{d:DesignInstance vm:LoginViewModel,
+                                     IsDesignTimeCreatable=True}"
+    BorderThickness="0" ShowCloseButton="False"
     NonActiveBorderBrush="Transparent"
     NonActiveWindowTitleBrush="White"
     ResizeMode="NoResize"
-    UseNoneWindowStyle="True"
+    ShowTitleBar="False"
     WindowStartupLocation="CenterScreen"
     WindowTransitionsEnabled="False"
     mc:Ignorable="d">
@@ -63,7 +61,7 @@
                     Text="{DynamicResource ProductName}" />
             </DockPanel>
             <Grid Margin="1">
-                <StackPanel >
+                <StackPanel>
                     <Border
                         Width="80"
                         Height="80"
@@ -71,28 +69,28 @@
                         CornerRadius="5"
                         Focusable="False">
                         <Border.Background>
-                            <ImageBrush ImageSource="/Assets/avatar.png" />
+                            <ImageBrush ImageSource="/Assets/banli.jpg" />
                         </Border.Background>
                     </Border>
                     <StackPanel>
                         <TextBlock
-                        FontSize="22"
-                        Text="{Binding Name}"
-                        TextAlignment="Center" />
+                            FontSize="22"
+                            Text="{Binding Name}"
+                            TextAlignment="Center" />
                         <Border Margin="48,64,48,0">
                             <Border.Resources>
                                 <SolidColorBrush x:Key="MahApps.Brushes.Gray8" Color="#FF38CD7F" />
                                 <SolidColorBrush x:Key="MahApps.Brushes.Gray7" Color="#FF06AD56" />
                             </Border.Resources>
                             <Button
-                            Padding="6"
-                            mah:ControlsHelper.FocusBorderThickness="0"
-                            Background="#FF07C160"
-                            Command="{Binding LoginCommand}"
-                            Content="{DynamicResource LoginText}"
-                            Cursor="Hand"
-                            FontSize="18"
-                            Foreground="White" />
+                                Padding="6"
+                                mah:ControlsHelper.FocusBorderThickness="0"
+                                Background="#FF07C160"
+                                Command="{Binding LoginCommand}"
+                                Content="{DynamicResource LoginText}"
+                                Cursor="Hand"
+                                FontSize="18"
+                                Foreground="White" />
                         </Border>
                         <Grid Margin="48,15,48,0">
                             <Grid.Resources>
@@ -105,24 +103,24 @@
                                 <ColumnDefinition Width="*" />
                             </Grid.ColumnDefinitions>
                             <Button
-                            HorizontalAlignment="Center"
-                            mah:ControlsHelper.FocusBorderThickness="0"
-                            Background="Transparent"
-                            BorderThickness="0"
-                            Command="{Binding SwitchAccountCommand}"
-                            Content="{DynamicResource SwitchAccount}"
-                            Cursor="Hand"
-                            FontSize="14"
-                            Foreground="#FF436895" />
+                                HorizontalAlignment="Center"
+                                mah:ControlsHelper.FocusBorderThickness="0"
+                                Background="Transparent"
+                                BorderThickness="0"
+                                Command="{Binding SwitchAccountCommand}"
+                                Content="{DynamicResource SwitchAccount}"
+                                Cursor="Hand"
+                                FontSize="14"
+                                Foreground="#FF436895" />
                             <Border
-                            Grid.Column="1"
-                            Margin="0,5"
-                            BorderBrush="#eee"
-                            BorderThickness="0.5,0" />
+                                Grid.Column="1"
+                                Margin="0,5"
+                                BorderBrush="#eee"
+                                BorderThickness="0.5,0" />
                         </Grid>
                     </StackPanel>
                 </StackPanel>
-                <StackPanel Background="White" Visibility="{Binding TdCodeVisibility}" >
+                <StackPanel Background="White" Visibility="{Binding TdCodeVisibility}">
                     <TextBlock
                         Margin="18"
                         FontSize="18"
@@ -133,7 +131,8 @@
                         <Image
                             Width="160"
                             Height="160"
-                            Cursor="Hand" Opacity="{Binding ImageOpacity}"
+                            Cursor="Hand"
+                            Opacity="{Binding ImageOpacity}"
                             Source="{Binding TdCode}" />
                         <mah:ProgressRing
                             HorizontalAlignment="Center"
