@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace IM_Wc.Views
 {
     /// <summary>
-    /// FriendView.xaml 的交互逻辑
+    /// ContactsView.xaml 的交互逻辑
     /// </summary>
-    public partial class FriendView : UserControl
+    public partial class ContactsView : UserControl
     {
-        public FriendView()
+        public ContactsView()
         {
             InitializeComponent();
         }

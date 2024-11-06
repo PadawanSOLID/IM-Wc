@@ -1,4 +1,5 @@
-﻿using IM_Wc.Models;
+﻿using IM_Wc.Constants;
+using IM_Wc.Models;
 using IM_Wc.ViewModels;
 using IM_Wc.Views;
 using Prism.Ioc;
@@ -39,6 +40,20 @@ namespace IM_Wc
         {
             containerRegistry.RegisterForNavigation<LoginView, LoginViewModel>();
             containerRegistry.RegisterForNavigation<ShellWindow, ShellViewModel>();
+
+            containerRegistry.RegisterForNavigation<ChatsView,ChatsViewModel>(ContentPageKeys.Chats);
+            containerRegistry.RegisterForNavigation<ContactsView,ContactsViewModel>(ContentPageKeys.Contacts);
+            containerRegistry.RegisterForNavigation<FavoritesView,FavoritesViewModel>(ContentPageKeys.Favorites);
+
+            containerRegistry.RegisterForNavigation<ChatsListView, ChatsListViewModel>(ListPageKeys.ChatsList);
+            containerRegistry.RegisterForNavigation<ContactsListView, ContactsListViewModel>(ListPageKeys.ContactsList);
+            containerRegistry.RegisterForNavigation<FavoritesListView, FavoritesListViewModel>(ListPageKeys.FavoritesList);
+
+            containerRegistry.RegisterDialog<ChatFilesView,ChatFilesViewModel>(DialogKeys.ChatFiles);
+            containerRegistry.RegisterDialog<MomentsView,MomentsViewModel>(DialogKeys.Moments);
+            containerRegistry.RegisterDialog<ChannelsView,ChannelsViewModel>(DialogKeys.Channels);
+            containerRegistry.RegisterDialog<TopStoriesView,TopStoriesViewModel>(DialogKeys.TopStories);
+            containerRegistry.RegisterDialog<SearchView,SearchViewModel>(DialogKeys.Search);
         }
     }
 

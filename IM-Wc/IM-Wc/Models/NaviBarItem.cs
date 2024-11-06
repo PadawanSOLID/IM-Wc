@@ -8,7 +8,8 @@ namespace IM_Wc.Models
 {
     public class NaviBarItem
     {
-        public string Tooltip { get; set; }
+        public string View { get; set; }
+        public string List { get; set; }
         public string Icon { get; set; }
     }
 }

@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace IM_Wc.Views
 {
     /// <summary>
-    /// SettingView.xaml 的交互逻辑
+    /// ChatFilesView.xaml 的交互逻辑
     /// </summary>
-    public partial class SettingView : Page
+    public partial class ChatFilesView : UserControl
     {
-        public SettingView()
+        public ChatFilesView()
         {
             InitializeComponent();
         }

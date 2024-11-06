@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace IM_Wc.Views
 {
     /// <summary>
-    /// MessageView.xaml 的交互逻辑
+    /// MomentsView.xaml 的交互逻辑
     /// </summary>
-    public partial class MessageView : UserControl
+    public partial class MomentsView : UserControl
     {
-        public MessageView()
+        public MomentsView()
         {
             InitializeComponent();
         }

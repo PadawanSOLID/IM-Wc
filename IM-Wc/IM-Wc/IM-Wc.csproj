@@ -26,7 +26,6 @@
     <Folder Include="Themes\Styles\" />
     <Folder Include="Services\" />
     <Folder Include="Interfaces\" />
-    <Folder Include="Constants\" />
   </ItemGroup>
 
   <ItemGroup>
