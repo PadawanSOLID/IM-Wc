@@ -35,7 +35,7 @@ namespace IM_Wc.ViewModels
         partial void OnSelectedNaviItemChanged(NaviBarItem value)
         {
            _listNavigationService.RequestNavigate(value.List);
-           _contentNavigationService.RequestNavigate(value.View);
+            _contentNavigationService.RequestNavigate(ContentPageKeys.Empty);
         }
 
         [RelayCommand]

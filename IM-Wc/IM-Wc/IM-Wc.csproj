@@ -10,8 +10,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Assets\avatar.png" />
     <None Remove="Assets\banli.jpg" />
+    <None Remove="Assets\friendA.jpg" />
+    <None Remove="Assets\friendB.jpg" />
+    <None Remove="Assets\groupA.jpg" />
+    <None Remove="Assets\groupB.jpg" />
     <None Remove="Assets\tdcode.png" />
   </ItemGroup>
 
@@ -29,8 +32,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="Assets\avatar.png" />
     <Resource Include="Assets\banli.jpg" />
+    <Resource Include="Assets\friendA.jpg" />
+    <Resource Include="Assets\friendB.jpg" />
+    <Resource Include="Assets\groupA.jpg" />
+    <Resource Include="Assets\groupB.jpg" />
     <Resource Include="Assets\tdcode.png" />
   </ItemGroup>
 

@@ -42,6 +42,7 @@ namespace IM_Wc
             containerRegistry.RegisterForNavigation<ShellWindow, ShellViewModel>();
 
             containerRegistry.RegisterForNavigation<ChatsView,ChatsViewModel>(ContentPageKeys.Chats);
+            containerRegistry.RegisterForNavigation<EmptyView>(ContentPageKeys.Empty);
             containerRegistry.RegisterForNavigation<ContactsView,ContactsViewModel>(ContentPageKeys.Contacts);
             containerRegistry.RegisterForNavigation<FavoritesView,FavoritesViewModel>(ContentPageKeys.Favorites);
 

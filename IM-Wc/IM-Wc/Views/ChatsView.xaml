@@ -4,9 +4,35 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:IM_Wc.Views"
-             mc:Ignorable="d" 
+             xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
+             mc:Ignorable="d"  xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
-            
-    </Grid>
+    <mah:SplitView>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="60"/>
+                <RowDefinition Height="1"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="1"/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+            <TextBlock Text="{Binding Name}"/>
+            <Button Style="{StaticResource MahApps.Styles.Button.ToolBar}" VerticalAlignment="Center" HorizontalAlignment="Right" Content="{iconPacks:Entypo Kind=DotsThreeHorizontal}"/>
+            <GridSplitter Grid.Row="1" IsEnabled="False"/>
+            <ListBox Grid.Row="2"/>
+            <GridSplitter Grid.Row="3"/>
+            <Grid Grid.Row="4">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="40"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="40"/>
+                </Grid.RowDefinitions>
+                <DockPanel>
+                    
+                </DockPanel>
+                <TextBox Grid.Row="1"/>
+                <Button Grid.Row="2" Width="150" HorizontalAlignment="Right">Send(S)</Button>
+            </Grid>
+        </Grid>
+    </mah:SplitView>
 </UserControl>
