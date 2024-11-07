@@ -25,7 +25,9 @@ namespace IM_Wc.ViewModels
 
         public void OnNavigatedTo(NavigationContext navigationContext)
         {
-
+            var chatListItem = navigationContext.Parameters.GetValue<ChatListItem>("chat");
+            Name = chatListItem.Name;
+            
         }
     }
 }

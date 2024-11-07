@@ -10,7 +10,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:prism="http://prismlibrary.com/"
     xmlns:viewmodels="clr-namespace:IM_Wc.ViewModels"
-    Title="ShellWindow"
+    Title="ShellWindow" WindowStartupLocation="CenterScreen"
     Width="910"
     Height="640"
     d:DataContext="{d:DesignInstance Type=viewmodels:ShellViewModel}"

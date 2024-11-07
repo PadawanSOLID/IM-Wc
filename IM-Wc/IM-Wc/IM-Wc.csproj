@@ -15,6 +15,8 @@
     <None Remove="Assets\friendB.jpg" />
     <None Remove="Assets\groupA.jpg" />
     <None Remove="Assets\groupB.jpg" />
+    <None Remove="Assets\newFriends.png" />
+    <None Remove="Assets\officalAccount.png" />
     <None Remove="Assets\tdcode.png" />
   </ItemGroup>
 
@@ -37,6 +39,8 @@
     <Resource Include="Assets\friendB.jpg" />
     <Resource Include="Assets\groupA.jpg" />
     <Resource Include="Assets\groupB.jpg" />
+    <Resource Include="Assets\newFriends.png" />
+    <Resource Include="Assets\officalAccount.png" />
     <Resource Include="Assets\tdcode.png" />
   </ItemGroup>
 
