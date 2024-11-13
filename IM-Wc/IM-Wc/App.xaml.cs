@@ -38,6 +38,8 @@ namespace IM_Wc
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
+            containerRegistry.RegisterDialogWindow<CustomDialogWindow>();
+
             containerRegistry.RegisterForNavigation<LoginView, LoginViewModel>();
             containerRegistry.RegisterForNavigation<ShellWindow, ShellViewModel>();
 

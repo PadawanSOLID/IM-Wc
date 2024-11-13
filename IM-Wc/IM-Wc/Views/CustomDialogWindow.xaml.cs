@@ -1,5 +1,5 @@
-﻿using IM_Wc.Constants;
-using Prism.Regions;
+﻿using MahApps.Metro.Controls;
+using Prism.Services.Dialogs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,22 +12,20 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace IM_Wc.Views
 {
     /// <summary>
-    /// ChatFilesView.xaml 的交互逻辑
+    /// CustomDialogWindow.xaml 的交互逻辑
     /// </summary>
-    public partial class ChatFilesView : UserControl
+    public partial class CustomDialogWindow : MetroWindow,IDialogWindow
     {
-        public ChatFilesView(IRegionManager regionManager)
+        public CustomDialogWindow()
         {
-          
             InitializeComponent();
-            RegionManager.SetRegionManager(cc, regionManager);
-            RegionManager.SetRegionName(cc, Regions.ChatsFilesRegion);
         }
+
+        public IDialogResult Result { get; set; }
     }
 }

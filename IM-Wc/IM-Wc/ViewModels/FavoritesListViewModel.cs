@@ -22,6 +22,9 @@ namespace IM_Wc.ViewModels
             ];
 
         [ObservableProperty]
+        ObservableCollection<FavoritesItem> tags = [];
+
+        [ObservableProperty]
         FavoritesItem selectedFavority;
         private IRegionNavigationService _contentNavigationService;
 
@@ -33,6 +36,10 @@ namespace IM_Wc.ViewModels
             }
         }
 
+        public FavoritesListViewModel()
+        {
+            
+        }
         public FavoritesListViewModel(IRegionManager regionManager)
         {
             _contentNavigationService = regionManager.Regions[Regions.MainRegion].NavigationService;

@@ -6,7 +6,10 @@
     xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
     xmlns:local="clr-namespace:IM_Wc.Views"
     xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:viewmodels="clr-namespace:IM_Wc.ViewModels" d:DataContext="{d:DesignInstance Type=viewmodels:FavoritesListViewModel}"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:viewmodels="clr-namespace:IM_Wc.ViewModels"
+    d:DataContext="{d:DesignInstance Type=viewmodels:FavoritesListViewModel,
+                                     IsDesignTimeCreatable=True}"
     d:DesignHeight="800"
     d:DesignWidth="250"
     mc:Ignorable="d">
@@ -25,21 +28,12 @@
                     <TextBlock Margin="3">New Note</TextBlock>
                 </DockPanel>
             </Button>
-            <ListBox ItemsSource="{Binding FavoritesItems}">
-                <ListBox.ItemTemplate>
-                    <DataTemplate>
-                        <DockPanel>
-                            <iconPacks:PackIconFeatherIcons Kind="{Binding Icon}" />
-                            <TextBlock Text="{Binding Name}" />
-                        </DockPanel>
-                    </DataTemplate>
-                </ListBox.ItemTemplate>
-            </ListBox>
+            <ListBox ItemTemplate="{StaticResource IconAndNameListBoxTemplate}" ItemsSource="{Binding FavoritesItems}" />
             <Separator />
             <Expander>
                 <Expander.Header>
                     <DockPanel>
-                        <iconPacks:PackIconFeatherIcons Kind="Tag" Margin="3"/>
+                        <iconPacks:PackIconFeatherIcons Margin="3" Kind="Tag" />
                         <TextBlock Margin="3" Text="Tag" />
                     </DockPanel>
                 </Expander.Header>

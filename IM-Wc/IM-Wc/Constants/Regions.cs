@@ -10,5 +10,6 @@ namespace IM_Wc.Constants
     {
         public const string ListRegion = "ListRegion";
         public const string MainRegion = "MainRegion";
+        public const string ChatsFilesRegion = "ChatsFilesRegion";
     }
 }

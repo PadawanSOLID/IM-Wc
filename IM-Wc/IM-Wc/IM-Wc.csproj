@@ -28,7 +28,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Themes\Styles\" />
     <Folder Include="Services\" />
     <Folder Include="Interfaces\" />
   </ItemGroup>
