@@ -30,9 +30,25 @@ namespace IM_Wc.ViewModels
             }
             else
             {
-                var param = new NavigationParameters();
-                param.Add("contact", value);
-                _contentNavigationService.RequestNavigate(ContentPageKeys.Contacts, param);
+                switch (value.Type)
+                {
+                    case ContactorType.NewFriends:
+                        _contentNavigationService.RequestNavigate(ContentPageKeys.NewFriends);
+                        break;
+                    case ContactorType.OfficalAccount:
+                        break;
+                    case ContactorType.Friend:
+                        var param = new NavigationParameters();
+                        param.Add("contact", value);
+                        _contentNavigationService.RequestNavigate(ContentPageKeys.Contacts,param);
+                        break;
+                    case ContactorType.Group:
+                        var gparam = new NavigationParameters();
+                        gparam.Add("contact", value);
+                        break;
+                    default:
+                        break;
+                }
             }
         }
 

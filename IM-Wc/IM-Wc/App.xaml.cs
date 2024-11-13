@@ -47,6 +47,7 @@ namespace IM_Wc
             containerRegistry.RegisterForNavigation<EmptyView>(ContentPageKeys.Empty);
             containerRegistry.RegisterForNavigation<ContactsView,ContactsViewModel>(ContentPageKeys.Contacts);
             containerRegistry.RegisterForNavigation<FavoritesView,FavoritesViewModel>(ContentPageKeys.Favorites);
+            containerRegistry.RegisterForNavigation<NewFriendsView, NewFriendsViewModel>(ContentPageKeys.NewFriends);
 
             containerRegistry.RegisterForNavigation<ChatsListView, ChatsListViewModel>(ListPageKeys.ChatsList);
             containerRegistry.RegisterForNavigation<ContactsListView, ContactsListViewModel>(ListPageKeys.ContactsList);
@@ -57,6 +58,7 @@ namespace IM_Wc
             containerRegistry.RegisterDialog<ChannelsView,ChannelsViewModel>(DialogKeys.Channels);
             containerRegistry.RegisterDialog<TopStoriesView,TopStoriesViewModel>(DialogKeys.TopStories);
             containerRegistry.RegisterDialog<SearchView,SearchViewModel>(DialogKeys.Search);
+
         }
     }
 

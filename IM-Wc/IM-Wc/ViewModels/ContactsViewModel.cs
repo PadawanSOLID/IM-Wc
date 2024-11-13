@@ -1,4 +1,6 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
+using IM_Wc.Models;
+using Prism.Common;
 using Prism.Regions;
 using System;
 using System.Collections.Generic;
@@ -19,7 +21,21 @@ namespace IM_Wc.ViewModels
 
         public void OnNavigatedTo(NavigationContext navigationContext)
         {
-           
+            var param = navigationContext.Parameters.GetValue<Contactor>("contact");
+            switch (param.Type)
+            {
+                case ContactorType.NewFriends:
+
+                    break;
+                case ContactorType.OfficalAccount:
+                    break;
+                case ContactorType.Friend:
+                    break;
+                case ContactorType.Group:
+                    break;
+                default:
+                    break;
+            }
         }
     }
 }

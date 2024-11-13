@@ -12,5 +12,6 @@ namespace IM_Wc.Constants
         public const string Contacts = "Contacts";
         public const string Favorites = "Favorites";
         public const string Empty = "Empty";
+        public const string NewFriends = "NewFriends";
     }
 }
