@@ -1,5 +1,7 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using IM_Wc.Models;
+using Microsoft.AspNetCore.SignalR.Client;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -88,8 +90,24 @@ namespace IM_Wc.ViewModels
             /*
            *loginRequest
            */
+            await HubConnect();
             await Task.Delay(1000);
             return true;
+        }
+        async Task HubConnect()
+        {
+            HubConnection hubConnection = new HubConnectionBuilder()
+                .WithUrl("http://localhost:8888/UserHub")
+                .WithAutomaticReconnect()
+                .WithServerTimeout(TimeSpan.FromSeconds(30)).Build();
+            
+            hubConnection.On<User>("LoginCallback", user =>
+            {
+                MessageBox.Show($"{user.Name} login in successfully!");
+             
+            });
+            await hubConnection.StartAsync();
+            await hubConnection.InvokeAsync("Login",new User() { Name="Call"});
         }
     }
 }
