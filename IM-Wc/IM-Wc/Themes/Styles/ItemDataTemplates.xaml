@@ -8,4 +8,34 @@
             <TextBlock Margin="5" Text="{Binding Name}" />
         </DockPanel>
     </DataTemplate>
+    <DataTemplate x:Key="IconNameDescriptionAndAcceptButtonTemplate">
+        <DockPanel>
+            <Image
+                Width="40"
+                Height="40"
+                Source="{Binding Icon}" />
+            <DockPanel Margin="10,0">
+                <ToggleButton
+                    Name="tg"
+                    Width="60"
+                    Margin="5"
+                    VerticalAlignment="Center"
+                    Command="{Binding DataContext.AcceptNewFriendCommand, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                    CommandParameter="{Binding}"
+                    DockPanel.Dock="Right">
+                    <TextBlock Name="tb" Text="Accept" />
+                </ToggleButton>
+                <UniformGrid Columns="1">
+                    <TextBlock Text="{Binding Name}" />
+                    <TextBlock Opacity="0.5" Text="{Binding Description}" />
+                </UniformGrid>
+            </DockPanel>
+        </DockPanel>
+        <DataTemplate.Triggers>
+            <DataTrigger Binding="{Binding IsAccepted}" Value="True">
+                <Setter TargetName="tb" Property="Text" Value="Accepted" />
+                <Setter TargetName="tg" Property="IsEnabled" Value="False" />
+            </DataTrigger>
+        </DataTemplate.Triggers>
+    </DataTemplate>
 </ResourceDictionary>

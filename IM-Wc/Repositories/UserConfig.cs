@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace ChatWPF.Repositories
 {
-    public class UserEntityConfig : IEntityTypeConfiguration<User>
+    public class UserConfig : IEntityTypeConfiguration<User>
     {
         public void Configure(EntityTypeBuilder<User> builder)
         {

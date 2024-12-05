@@ -34,6 +34,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Entities\ChatWPF.Entities.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Resource Include="Assets\banli.jpg" />
     <Resource Include="Assets\friendA.jpg" />
     <Resource Include="Assets\friendB.jpg" />

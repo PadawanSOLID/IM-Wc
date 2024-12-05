@@ -1,15 +1,22 @@
-﻿using Entities;
+﻿using ChatWPF.Repositories;
+using Entities;
 using Microsoft.AspNetCore.SignalR;
 
 namespace IM_Wc.Server
 {
     public class UsersHub:Hub
     {
-        public async Task Login(User user) 
+
+        public async Task Login(int id)
         {
+            User user = null;
             string connectionId = Context.ConnectionId;
-            Console.WriteLine(connectionId);
-            await Clients.Caller.SendAsync("LoginCallback", new User() { Name = "callback" });
+            using (ChatDbContext ctx = new())
+            {
+                user = ctx.GetUserById(id);
+            }
+            await Clients.Caller.SendAsync("LoginCallback", user);
         }
+
     }
 }

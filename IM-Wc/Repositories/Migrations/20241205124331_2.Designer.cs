@@ -3,6 +3,7 @@ using ChatWPF.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ChatWPF.Repositories.Migrations
 {
     [DbContext(typeof(ChatDbContext))]
-    partial class ChatDbContextModelSnapshot : ModelSnapshot
+    [Migration("20241205124331_2")]
+    partial class _2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -78,7 +81,7 @@ namespace ChatWPF.Repositories.Migrations
                         .IsRequired();
 
                     b.HasOne("Entities.User", "User")
-                        .WithMany("Contactors")
+                        .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
@@ -86,11 +89,6 @@ namespace ChatWPF.Repositories.Migrations
                     b.Navigation("Contactor");
 
                     b.Navigation("User");
-                });
-
-            modelBuilder.Entity("Entities.User", b =>
-                {
-                    b.Navigation("Contactors");
                 });
 #pragma warning restore 612, 618
         }

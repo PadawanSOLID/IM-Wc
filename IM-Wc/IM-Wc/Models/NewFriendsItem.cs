@@ -14,6 +14,8 @@ namespace IM_Wc.Models
         [ObservableProperty]
         string icon;
         [ObservableProperty]
+        string description;
+        [ObservableProperty]
         bool isAccepted;
     }
 }

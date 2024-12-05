@@ -101,13 +101,13 @@ namespace IM_Wc.ViewModels
                 .WithAutomaticReconnect()
                 .WithServerTimeout(TimeSpan.FromSeconds(30)).Build();
             
-            hubConnection.On<User>("LoginCallback", user =>
+            hubConnection.On<Entities.User>("LoginCallback", user =>
             {
                 MessageBox.Show($"{user.Name} login in successfully!");
              
             });
             await hubConnection.StartAsync();
-            await hubConnection.InvokeAsync("Login",new User() { Name="Call"});
+            await hubConnection.InvokeAsync("Login",1);
         }
     }
 }

@@ -32,9 +32,9 @@ namespace IM_Wc.ViewModels
         {
             ObservableCollection<NewFriendsItem> newFriends = [
                new(){Icon="/Assets/banli.jpg",IsAccepted=false,Name="banli"},
-               new(){Icon="/Assets/friendA.jpg",IsAccepted=false,Name="friendA"},
+               new(){Icon="/Assets/friendA.jpg",IsAccepted=true,Name="friendA"},
                new(){Icon="/Assets/friendB.jpg",IsAccepted=false,Name="friendB"},
-               new(){Icon="/Assets/groupA.jpg",IsAccepted=false,Name="groupA"},
+               new(){Icon="/Assets/groupA.jpg",IsAccepted=true,Name="groupA"},
                new(){Icon="/Assets/groupB.jpg",IsAccepted=false,Name="groupB"},
                 ];
             NewFriendsItems = newFriends;
