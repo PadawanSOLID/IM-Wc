@@ -1,6 +1,8 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 using IM_Wc.Constants;
 using IM_Wc.Models;
+using Microsoft.AspNetCore.SignalR.Client;
 using Prism.Regions;
 using System;
 using System.Collections.Generic;
@@ -8,6 +10,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Data;
 
 namespace IM_Wc.ViewModels
@@ -20,7 +23,13 @@ namespace IM_Wc.ViewModels
         ObservableCollection<Contactor> contactors=[];
 
         [ObservableProperty]
+        ObservableCollection<Contactor> searchContacts = [];
+
+        [ObservableProperty]
         Contactor selectedContactor;
+
+        [ObservableProperty]
+        Visibility searchContactsVisibility=Visibility.Collapsed;
 
         partial void OnSelectedContactorChanged(Contactor value)
         {
@@ -52,9 +61,43 @@ namespace IM_Wc.ViewModels
             }
         }
 
+
         public ContactsListViewModel(IRegionManager regionManager)
         {
             _contentNavigationService = regionManager.Regions[Regions.MainRegion].NavigationService;
+            Init();
+        }
+
+        [RelayCommand]
+        async Task StartSeachContacts()
+        {
+            SearchContactsVisibility = Visibility.Visible;
+            await ShowAllUsers();
+        }
+
+        async Task ShowAllUsers()
+        {
+            HubConnection hubConnection = new HubConnectionBuilder()
+               .WithUrl("http://localhost:8888/UserHub")
+               .WithAutomaticReconnect()
+               .WithServerTimeout(TimeSpan.FromSeconds(30)).Build();
+
+            hubConnection.On<IEnumerable<Entities.User>>("GetAllUsersCallback", users =>
+            {
+                SearchContacts = new(users.Select(n => new Contactor
+                {
+                    Name=n.Name,
+                    Id=n.Id,
+                }));
+            });
+            await hubConnection.StartAsync();
+            await hubConnection.InvokeAsync("GetAllUsers");
+        }
+
+        [RelayCommand]
+        async Task BackToContactors()
+        {
+            SearchContactsVisibility = Visibility.Collapsed;
         }
 
         public bool IsNavigationTarget(NavigationContext navigationContext) => true;
@@ -66,7 +109,7 @@ namespace IM_Wc.ViewModels
 
         public void OnNavigatedTo(NavigationContext navigationContext)
         {
-            Init();
+           
         }
 
         void Init()

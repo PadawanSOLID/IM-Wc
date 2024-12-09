@@ -16,8 +16,8 @@ namespace ChatWPF.Repositories
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             base.OnConfiguring(optionsBuilder);
-            //string connStr = "Data Source=SOU24L112300680\\SQLEXPRESS;Initial Catalog=Wc;Integrated Security=True;Encrypt=False";
-            string connStr = "Data Source=LAPTOP-F8JGEQPH;Initial Catalog=Wc;Integrated Security=True;Encrypt=False";
+            string connStr = "Data Source=SOU24L112300680\\SQLEXPRESS;Initial Catalog=Wc;Integrated Security=True;Encrypt=False";
+            //string connStr = "Data Source=LAPTOP-F8JGEQPH;Initial Catalog=Wc;Integrated Security=True;Encrypt=False";
             optionsBuilder.UseSqlServer(connStr);
         }
 

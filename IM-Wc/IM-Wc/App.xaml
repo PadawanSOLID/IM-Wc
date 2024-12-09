@@ -14,8 +14,12 @@
                 <ResourceDictionary Source="/Themes/cn_s.xaml" />
                 <ResourceDictionary Source="/Themes/Default.xaml" />
                 <ResourceDictionary Source="/Themes/Resources/Brushes.xaml" />
+                <ResourceDictionary Source="/Themes/Resources/Geometry.xaml" />
                 <ResourceDictionary Source="/Themes/Styles/ItemDataTemplates.xaml" />
                 <ResourceDictionary Source="/Themes/Styles/TextBlock.xaml" />
+                <ResourceDictionary Source="/Themes/Styles/ListBox.xaml" />
+                <ResourceDictionary Source="/Themes/Styles/Button.xaml" />
+                <ResourceDictionary Source="/Themes/Styles/DropDownButton.xaml" />
 
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>

@@ -67,7 +67,6 @@ namespace IM_Wc.ViewModels
         public ChatFilesViewModel(IRegionManager regionManager)
         {
             _chatsFilesNavigationService = regionManager.Regions[Regions.ChatsFilesRegion].NavigationService;
-
         }
         public string Title => "Chat Files";
 

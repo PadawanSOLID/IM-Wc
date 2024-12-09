@@ -11,6 +11,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
 
 namespace IM_Wc.ViewModels
 {
@@ -24,18 +25,51 @@ namespace IM_Wc.ViewModels
         [ObservableProperty]
         ObservableCollection<NaviBarItem> naviBarItems =
             [
-                new() { Icon = "CommentRegular", View = ContentPageKeys.Chats,List=ListPageKeys.ChatsList},
-                new() { Icon = "AddressBookRegular", View =ContentPageKeys.Contacts,List=ListPageKeys.ContactsList},
-                new() { Icon = "StarRegular", View = ContentPageKeys.Favorites,List=ListPageKeys.FavoritesList },
+                new() { Icon = "Chat", View = ContentPageKeys.Chats,List=ListPageKeys.ChatsList},
+                new() { Icon = "UserList", View =ContentPageKeys.Contacts,List=ListPageKeys.ContactsList},
+                new() { Icon = "Favorite", View = ContentPageKeys.Favorites,List=ListPageKeys.FavoritesList },
+            ];
+
+        [ObservableProperty]
+        ObservableCollection<NaviBarItem> dialogItems =
+           [
+               new() { Icon = "ChatFiles", View = ContentPageKeys.Chats,List=DialogKeys.ChatFiles},
+                new() { Icon = "Moments", View =ContentPageKeys.Contacts,List=DialogKeys.Moments},
+                new() { Icon = "Channels", View = ContentPageKeys.Favorites,List=DialogKeys.Channels },
+                new() { Icon = "TopStories", View = ContentPageKeys.Favorites,List=DialogKeys.TopStories },
+           ];
+
+        public List<object> Extras { get; set; } =
+            [
+               "ChatFiles",
+               "Moments",
+                null,
+                "Channels",
+                "Channels",
+                null,
+                "Channels",
             ];
 
         [ObservableProperty]
         NaviBarItem selectedNaviItem;
-
         partial void OnSelectedNaviItemChanged(NaviBarItem value)
         {
-           _listNavigationService.RequestNavigate(value.List);
+            _listNavigationService.RequestNavigate(value.List);
             _contentNavigationService.RequestNavigate(ContentPageKeys.Empty);
+        }
+
+        private NaviBarItem selectedDialog;
+        public NaviBarItem SelectedDialog
+        {
+            get { return selectedDialog; }
+            set
+            {
+                SetProperty(ref selectedDialog, value);
+                if (value != null)
+                {
+                    _dialogService.Show(value.List);
+                }
+            }
         }
 
         [RelayCommand]
@@ -43,23 +77,28 @@ namespace IM_Wc.ViewModels
         {
             try
             {
-              _listNavigationService=  _regionManager.Regions[Regions.ListRegion].NavigationService;
+                _listNavigationService = _regionManager.Regions[Regions.ListRegion].NavigationService;
                 _contentNavigationService = _regionManager.Regions[Regions.MainRegion].NavigationService;
-                SelectedNaviItem=NaviBarItems.First();
+                SelectedNaviItem = NaviBarItems.First();
             }
             catch (Exception e)
             {
-                MessageBox.Show(e.Message); 
+                MessageBox.Show(e.Message);
             }
         }
 
         [RelayCommand]
-        void ShowDialog(string dialogName)
+        void ShowDialog(NaviBarItem dialog)
         {
-            _dialogService.Show(dialogName);
+            _dialogService.Show(dialog.List);
         }
 
-        public ShellViewModel(IRegionManager regionManager,IDialogService dialogService)
+        public ShellViewModel()
+        {
+
+        }
+
+        public ShellViewModel(IRegionManager regionManager, IDialogService dialogService)
         {
             _regionManager = regionManager;
             _dialogService = dialogService;

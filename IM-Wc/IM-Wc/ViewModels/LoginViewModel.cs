@@ -82,7 +82,6 @@ namespace IM_Wc.ViewModels
             /*
         *pending code Request
         */
-            await Task.Delay(1000);
             return "/Assets/tdcode.png";
         }
         async Task<bool> PendingLogin()
@@ -91,7 +90,7 @@ namespace IM_Wc.ViewModels
            *loginRequest
            */
             await HubConnect();
-            await Task.Delay(1000);
+          
             return true;
         }
         async Task HubConnect()
@@ -103,7 +102,6 @@ namespace IM_Wc.ViewModels
             
             hubConnection.On<Entities.User>("LoginCallback", user =>
             {
-                MessageBox.Show($"{user.Name} login in successfully!");
              
             });
             await hubConnection.StartAsync();

@@ -15,7 +15,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ChatWPF.Entities", "Entitie
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ChatWPF.Repositories", "Repositories\ChatWPF.Repositories.csproj", "{8B67A555-3479-4499-B2CF-FF2F2C64A14C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DbTest", "DbTest\DbTest.csproj", "{04B787CC-7698-4833-9A95-37475B9AD22E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DbTest", "DbTest\DbTest.csproj", "{04B787CC-7698-4833-9A95-37475B9AD22E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

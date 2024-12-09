@@ -16,6 +16,7 @@ namespace IM_Wc.Models
     }
     public partial class Contactor : ObservableObject
     {
+        public long Id { get; set; }
         [ObservableProperty]
         string name;
 

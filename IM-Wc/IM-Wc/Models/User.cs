@@ -12,14 +12,12 @@ namespace IM_Wc.Models
     public partial class User:ObservableObject
     {
         [ObservableProperty]
-        string id;
+        long id;
         [ObservableProperty]
         string name;
         [ObservableProperty]
         string avatar;
         [ObservableProperty]
         Activity activity;
-        [ObservableProperty]
-        ObservableCollection<User> friends;
     }
 }

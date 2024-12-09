@@ -3,6 +3,7 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
     xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
     xmlns:local="clr-namespace:IM_Wc.Views"
     xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
@@ -29,16 +30,26 @@
                 DockPanel.Dock="Right"
                 Style="{StaticResource MahApps.Styles.Button.ToolBar}" />
             <TextBox
-                Margin="5"
+                Margin="5" Style="{StaticResource MahApps.Styles.TextBox.Search}"
                 mah:ControlsHelper.CornerRadius="5"
-                mah:TextBoxHelper.ButtonContent="{iconPacks:FontAwesome Kind=MagnifyingGlassSolid}"
+                mah:TextBoxHelper.ButtonCommand="{Binding BackToContactorsCommand}"
                 mah:TextBoxHelper.ButtonWidth="30"
-                mah:TextBoxHelper.Watermark="Search"
-                Background="#f3f3f3" />
+                
+                mah:TextBoxHelper.Watermark="Search" 
+                Background="#f3f3f3">
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="GotFocus">
+                        <i:InvokeCommandAction Command="{Binding StartSeachContactsCommand}" />
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </TextBox>
 
         </DockPanel>
-        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto"     Background="#FFE7E6E5">
-            <StackPanel >
+        <ScrollViewer
+            Grid.Row="1"
+            Background="#FFE7E6E5"
+            VerticalScrollBarVisibility="Auto">
+            <StackPanel>
                 <Button Margin="20,10">
                     <DockPanel>
                         <iconPacks:PackIconUnicons Margin="3" Kind="UsersAltLine" />
@@ -47,7 +58,6 @@
                 </Button>
                 <ListView
                     Grid.Row="1"
-                  
                     ItemsSource="{Binding Contactors}"
                     SelectedItem="{Binding SelectedContactor}">
                     <ListView.GroupStyle>
@@ -100,13 +110,59 @@
                                         Height="42"
                                         Source="{Binding Image}" />
                                 </mah:ClipBorder>
-                                <TextBlock Text="{Binding Name}" Grid.Column="1" VerticalAlignment="Center" FontSize="14"/>
+                                <TextBlock
+                                    Grid.Column="1"
+                                    VerticalAlignment="Center"
+                                    FontSize="14"
+                                    Text="{Binding Name}" />
                             </Grid>
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
 
             </StackPanel>
+
+        </ScrollViewer>
+        <ScrollViewer
+            Grid.Row="1"
+            Background="#FFE7E6E5"
+            VerticalScrollBarVisibility="Auto"
+            Visibility="{Binding SearchContactsVisibility}">
+            <ListBox ItemsSource="{Binding SearchContacts}">
+                <ListBox.ItemContainerStyle>
+                    <Style BasedOn="{StaticResource MahApps.Styles.ListBoxItem}" TargetType="ListBoxItem">
+                        <Setter Property="Height" Value="56" />
+                        <Setter Property="Background" Value="#FFE7E6E5" />
+                        <Setter Property="mah:ItemHelper.SelectedBackgroundBrush" Value="#FFC3C3C4" />
+                        <Setter Property="mah:ItemHelper.ActiveSelectionBackgroundBrush" Value="#FFC3C3C4" />
+                        <Setter Property="mah:ItemHelper.HoverBackgroundBrush" Value="#FFE7E7E7" />
+                        <Setter Property="Width" Value="250" />
+                        <Setter Property="Padding" Value="10" />
+                    </Style>
+                </ListBox.ItemContainerStyle>
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <mah:ClipBorder Margin="0,0,10,0" CornerRadius="2">
+                                <Image
+                                    Width="42"
+                                    Height="42"
+                                    Source="{Binding Image}" />
+                            </mah:ClipBorder>
+                            <TextBlock
+                                Grid.Column="1"
+                                VerticalAlignment="Center"
+                                FontSize="14"
+                                Text="{Binding Name}" />
+                        </Grid>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+
+            </ListBox>
         </ScrollViewer>
     </Grid>
 

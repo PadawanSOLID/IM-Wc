@@ -18,5 +18,14 @@ namespace IM_Wc.Server
             await Clients.Caller.SendAsync("LoginCallback", user);
         }
 
+        public async Task GetAllUsers() 
+        {
+            using (ChatDbContext ctx=new())
+            {
+                var users = ctx.Users.ToList();
+                await Clients.Caller.SendAsync("GetAllUsersCallback",users);
+            }
+        }
+
     }
 }

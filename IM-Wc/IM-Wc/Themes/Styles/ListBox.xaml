@@ -1,0 +1,80 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls">
+    <Style
+        x:Key="NaviMenuListBoxItem"
+        BasedOn="{StaticResource MahApps.Styles.ListBoxItem}"
+        TargetType="ListBoxItem">
+        <Setter Property="Foreground" Value="{StaticResource NaviBarItemStroke}" />
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="Height" Value="41" />
+        <Setter Property="Padding" Value="0" />
+        <Setter Property="HorizontalContentAlignment" Value="Center" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type ListBoxItem}">
+                    <Grid
+                        x:Name="RootGrid"
+                        Background="Transparent"
+                        RenderOptions.ClearTypeHint="{TemplateBinding RenderOptions.ClearTypeHint}"
+                        SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
+                        <mah:ClipBorder x:Name="Border" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
+                            <ContentPresenter
+                                x:Name="ContentPresenter"
+                                Margin="{TemplateBinding Padding}"
+                                HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+                        </mah:ClipBorder>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsSelected" Value="True">
+                            <Setter Property="Background" Value="{StaticResource NaviBarItemSelectedFill}" />
+                            <Setter Property="Foreground" Value="{StaticResource NaviBarItemSelectedFill}" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="ToolTip" Value="{Binding View}" />
+    </Style>
+    <Style
+        x:Key="NaviDialogListBoxItem"
+        BasedOn="{StaticResource NaviMenuListBoxItem}"
+        TargetType="ListBoxItem">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type ListBoxItem}">
+                    <Grid
+                        x:Name="RootGrid"
+                        Background="Transparent"
+                        RenderOptions.ClearTypeHint="{TemplateBinding RenderOptions.ClearTypeHint}"
+                        SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
+                        <mah:ClipBorder x:Name="Border" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
+
+                            <ContentPresenter
+                                x:Name="ContentPresenter"
+                                Margin="{TemplateBinding Padding}"
+                                HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+
+
+                        </mah:ClipBorder>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsMouseOver" Value="True" />
+                                <Condition Property="IsSelected" Value="True" />
+                            </MultiTrigger.Conditions>
+                            <Setter Property="Background" Value="{StaticResource NaviBarItemSelectedFill}" />
+                            <Setter Property="Foreground" Value="{StaticResource NaviBarItemSelectedFill}" />
+                        </MultiTrigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>
