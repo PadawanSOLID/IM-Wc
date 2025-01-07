@@ -1,0 +1,277 @@
+﻿<mah:MetroWindow
+    x:Class="IM_Wc.Views.ShellWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:attach="clr-namespace:IM_Wc.Attaches"
+    xmlns:cvt="clr-namespace:IM_Wc.Converters"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+    xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
+    xmlns:local="clr-namespace:IM_Wc.Views"
+    xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:prism="http://prismlibrary.com/"
+    xmlns:selector="clr-namespace:IM_Wc.TemplateSelectors"
+    xmlns:viewmodels="clr-namespace:IM_Wc.ViewModels"
+    Title="ShellWindow"
+    Width="910"
+    Height="640"
+    d:DataContext="{d:DesignInstance Type=viewmodels:ShellViewModel,
+                                     IsDesignTimeCreatable=True}"
+    BorderBrush="#33333333"
+    CornerPreference="DoNotRound"
+    GlowColor="#33333333"
+    ShowTitleBar="False"
+    WindowStartupLocation="CenterScreen"
+    mc:Ignorable="d">
+    <Window.Resources>
+        <cvt:StringToGeometryResourceConverter x:Key="StrToGeoResourceCvt" />
+
+    </Window.Resources>
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding LoadedCommand}" />
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="52" />
+            <ColumnDefinition Width="250" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Border Background="{StaticResource NaviBarBackground}">
+            <DockPanel LastChildFill="False">
+                <Image
+                    Width="36"
+                    Height="36"
+                    Margin="0,36,0,0"
+                    DockPanel.Dock="Top"
+                    Source="/Assets/banli.jpg" />
+
+                <ListBox
+                    Margin="0,18,0,0"
+                    Background="Transparent"
+                    DockPanel.Dock="Top"
+                    ItemContainerStyle="{StaticResource NaviMenuListBoxItem}"
+                    ItemsSource="{Binding NaviBarItems}"
+                    SelectedItem="{Binding SelectedNaviItem}">
+
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <Path
+                                Width="20"
+                                Height="20"
+                                Data="{Binding Icon, Converter={StaticResource StrToGeoResourceCvt}}"
+                                Fill="{Binding Background, RelativeSource={RelativeSource AncestorType=ListBoxItem}}"
+                                Stretch="Uniform"
+                                Stroke="{Binding Foreground, RelativeSource={RelativeSource AncestorType=ListBoxItem}}" />
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+                <ItemsControl DockPanel.Dock="Top" ItemsSource="{Binding DialogItems}">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Button
+                                Width="40"
+                                Height="40"
+                                Padding="10"
+                                attach:GeometryButtonHelper.Icon="{Binding Icon, Converter={StaticResource StrToGeoResourceCvt}}"
+                                Background="Transparent"
+                                Command="{Binding DataContext.ShowDialogCommand, RelativeSource={RelativeSource AncestorType=ItemsControl}}"
+                                CommandParameter="{Binding}"
+                                Style="{StaticResource GeoButton}"
+                                ToolTip="{Binding List}" />
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+                <!--<ListBox
+                    Background="Transparent"
+                    DockPanel.Dock="Top"
+                    ItemContainerStyle="{StaticResource NaviDialogListBoxItem}"
+                    ItemsSource="{Binding DialogItems}"
+                    SelectedItem="{Binding SelectedDialog}">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <Path
+                                Width="20"
+                                Height="20"
+                                Data="{Binding Icon, Converter={StaticResource StrToGeoResourceCvt}}"
+                                Fill="{Binding Background, RelativeSource={RelativeSource AncestorType=ListBoxItem}}"
+                                Stretch="Uniform"
+                                Stroke="{Binding Foreground, RelativeSource={RelativeSource AncestorType=ListBoxItem}}">
+                                <Path.Style>
+                                    <Style TargetType="Path">
+                                        <Style.Triggers />
+                                    </Style>
+                                </Path.Style>
+                            </Path>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>-->
+                <UniformGrid
+                    Margin="0,6"
+                    Columns="1"
+                    DockPanel.Dock="Bottom">
+                    <Button
+                        Height="40" Padding="10"
+                        attach:GeometryButtonHelper.Icon="{StaticResource CompassGeometry}"
+                        Background="Transparent" 
+                        Style="{StaticResource GeoButton}" />
+                    <Button
+                        Height="40" Padding="10"
+                        attach:GeometryButtonHelper.Icon="{StaticResource PhoneGeometry}"
+                        Background="Transparent"
+                        Style="{StaticResource GeoButton}" />
+                    <mah:Badged>
+
+                        <mah:Badged.Resources>
+                            <!--<ControlTemplate x:Key="{ComponentResourceKey ResourceId=SubmenuHeaderTemplateKey, TypeInTargetAssembly={x:Type MenuItem}}" TargetType="{x:Type MenuItem}">
+                                <Grid SnapsToDevicePixels="True">
+                                    <Rectangle
+                                        x:Name="Bg"
+                                        Fill="{TemplateBinding Background}"
+                                        Stroke="{TemplateBinding BorderBrush}"
+                                        StrokeThickness="1" />
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition
+                                                Width="Auto"
+                                                MinWidth="24"
+                                                SharedSizeGroup="MenuItemIconColumnGroup" />
+                                            <ColumnDefinition Width="4" />
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="6" />
+                                            <ColumnDefinition Width="Auto" SharedSizeGroup="MenuItemIGTColumnGroup" />
+                                            <ColumnDefinition Width="17" />
+                                        </Grid.ColumnDefinitions>
+                                        <ContentPresenter
+                                            x:Name="Icon"
+                                            Margin="1"
+                                            HorizontalAlignment="Center"
+                                            VerticalAlignment="Center"
+                                            ContentSource="Icon"
+                                            SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+                                        <Path
+                                            x:Name="GlyphPanel"
+                                            Margin="5,0,0,0"
+                                            HorizontalAlignment="Center"
+                                            VerticalAlignment="Center"
+                                            Data="{DynamicResource Checkmark}"
+                                            Fill="{DynamicResource MahApps.Brushes.CheckmarkFill}"
+                                            FlowDirection="LeftToRight"
+                                            Visibility="Collapsed" />
+                                        <ContentPresenter
+                                            Grid.Column="2"
+                                            Margin="{TemplateBinding Padding}"
+                                            ContentSource="Header"
+                                            RecognizesAccessKey="True"
+                                            SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+                                        <TextBlock
+                                            Grid.Column="4"
+                                            Margin="{TemplateBinding Padding}"
+                                            Text="{TemplateBinding InputGestureText}"
+                                            Visibility="Collapsed" />
+
+                                    </Grid>
+                                    <Grid Margin="2,0,1,0">
+                                        <Popup
+                                            x:Name="PART_Popup"
+                                            AllowsTransparency="True"
+                                            Focusable="False"
+                                            HorizontalOffset="-1"
+                                            IsOpen="{Binding IsSubmenuOpen, RelativeSource={RelativeSource TemplatedParent}}"
+                                            Placement="Right"
+                                            PopupAnimation="{DynamicResource {x:Static SystemParameters.MenuPopupAnimationKey}}"
+                                            VerticalOffset="-3">
+                                            <mah:ClipBorder
+                                                x:Name="Border"
+                                                Background="{DynamicResource MahApps.Brushes.SubMenu.Background}"
+                                                BorderBrush="{DynamicResource MahApps.Brushes.SubMenu.Border}"
+                                                BorderThickness="{TemplateBinding BorderThickness}"
+                                                CornerRadius="{TemplateBinding mah:ControlsHelper.CornerRadius}"
+                                                SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
+                                                <ScrollViewer
+                                                    x:Name="SubMenuScrollViewer"
+                                                    CanContentScroll="True"
+                                                    Style="{DynamicResource {ComponentResourceKey ResourceId=MenuScrollViewer,
+                                                                                                  TypeInTargetAssembly={x:Type FrameworkElement}}}">
+                                                    <ItemsPresenter
+                                                        x:Name="ItemsPresenter"
+                                                        Margin="0"
+                                                        Grid.IsSharedSizeScope="True"
+                                                        KeyboardNavigation.DirectionalNavigation="Cycle"
+                                                        KeyboardNavigation.TabNavigation="Cycle"
+                                                        SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+                                                </ScrollViewer>
+                                            </mah:ClipBorder>
+                                        </Popup>
+                                    </Grid>
+                                </Grid>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="IsSuspendingPopupAnimation" Value="True">
+                                        <Setter TargetName="PART_Popup" Property="PopupAnimation" Value="None" />
+                                    </Trigger>
+                                    <Trigger Property="Icon" Value="{x:Null}">
+                                        <Setter TargetName="Icon" Property="Visibility" Value="Collapsed" />
+                                    </Trigger>
+                                    <Trigger Property="IsChecked" Value="True">
+                                        <Setter TargetName="GlyphPanel" Property="Visibility" Value="Visible" />
+                                        <Setter TargetName="Icon" Property="Visibility" Value="Collapsed" />
+                                    </Trigger>
+                                    <Trigger SourceName="PART_Popup" Property="HasDropShadow" Value="True">
+                                        <Setter TargetName="Border" Property="Effect" Value="{DynamicResource MahApps.DropShadowEffect.Menu}" />
+                                        <Setter TargetName="Border" Property="Margin" Value="0,0,6,6" />
+                                    </Trigger>
+                                    <Trigger Property="IsHighlighted" Value="True">
+                                        <Setter TargetName="Bg" Property="Fill" Value="{DynamicResource MahApps.Brushes.MenuItem.SelectionFill}" />
+                                        <Setter TargetName="Bg" Property="Stroke" Value="{DynamicResource MahApps.Brushes.MenuItem.SelectionStroke}" />
+                                    </Trigger>
+                                    <Trigger Property="IsEnabled" Value="False">
+                                        <Setter Property="Foreground" Value="{DynamicResource MahApps.Brushes.MenuItem.Foreground.Disabled}" />
+                                        <Setter TargetName="GlyphPanel" Property="Fill" Value="{DynamicResource MahApps.Brushes.MenuItem.GlyphPanel.Disabled}" />
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>-->
+                        </mah:Badged.Resources>
+
+                        <mah:DropDownButton Height="40" Width="40"
+                            ArrowVisibility="Collapsed"   Foreground="{StaticResource NaviBarItemStroke}"
+                            Background="Transparent"
+                            BorderThickness="0"  Orientation="Vertical"
+                            Icon="{iconPacks:PhosphorIcons Kind=ListLight}"
+                            ItemsSource="{Binding Extras}">
+                            <mah:DropDownButton.ButtonStyle>
+                                <Style TargetType="Button" BasedOn="{StaticResource MahApps.Styles.Button.Flat}">
+                                    
+                                </Style>
+                            </mah:DropDownButton.ButtonStyle>
+                            <mah:DropDownButton.ItemContainerStyleSelector>
+                                <selector:MenuSelector>
+
+                                    <selector:MenuSelector.SeparatorTemplate>
+                                        <Style TargetType="MenuItem">
+                                            <Setter Property="Template">
+                                                <Setter.Value>
+                                                    <ControlTemplate>
+                                                        <Separator />
+                                                    </ControlTemplate>
+                                                </Setter.Value>
+
+                                            </Setter>
+                                        </Style>
+                                    </selector:MenuSelector.SeparatorTemplate>
+                                </selector:MenuSelector>
+                            </mah:DropDownButton.ItemContainerStyleSelector>
+
+                        </mah:DropDownButton>
+
+
+                    </mah:Badged>
+
+                </UniformGrid>
+            </DockPanel>
+        </Border>
+        <ContentControl Grid.Column="1" prism:RegionManager.RegionName="ListRegion" />
+        <ContentControl Grid.Column="2" prism:RegionManager.RegionName="MainRegion" />
+    </Grid>
+</mah:MetroWindow>

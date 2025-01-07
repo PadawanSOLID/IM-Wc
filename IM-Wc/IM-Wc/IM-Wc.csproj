@@ -1,0 +1,84 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <RootNamespace>IM_Wc</RootNamespace>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Assets\banli.jpg" />
+    <None Remove="Assets\friendA.jpg" />
+    <None Remove="Assets\friendB.jpg" />
+    <None Remove="Assets\groupA.jpg" />
+    <None Remove="Assets\groupB.jpg" />
+    <None Remove="Assets\newFriends.png" />
+    <None Remove="Assets\officalAccount.png" />
+    <None Remove="Assets\tdcode.png" />
+  </ItemGroup>
+	
+  <ItemGroup>
+    <PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.2" />
+    <PackageReference Include="MahApps.Metro.IconPacks" Version="5.1.0" />
+    <PackageReference Include="Microsoft.AspNetCore.SignalR.Client" Version="8.0.11" />
+	  <PackageReference Include="MahApps.Metro" Version="3.0.0-alpha0513" />
+    <PackageReference Include="Prism.Unity" Version="8.1.97" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Services\" />
+    <Folder Include="Interfaces\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Entities\ChatWPF.Entities.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Assets\banli.jpg" />
+    <Resource Include="Assets\friendA.jpg" />
+    <Resource Include="Assets\friendB.jpg" />
+    <Resource Include="Assets\groupA.jpg" />
+    <Resource Include="Assets\groupB.jpg" />
+    <Resource Include="Assets\newFriends.png" />
+    <Resource Include="Assets\officalAccount.png" />
+    <Resource Include="Assets\tdcode.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Properties\Resource_en.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resource_en.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Properties\Resources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Properties\Resource_tcn.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resource_tcn.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Properties\Resource_en.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resource_en.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Properties\Resource_tcn.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resource_tcn.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+
+</Project>
